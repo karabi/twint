@@ -18,12 +18,13 @@ class TokenExpiryException(Exception):
 class Token:
     def __init__(self, config):
         self._session = None
-        self._session.headers.update({'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101 Firefox/78.0'})
         self.config = config
         self._retries = 5
         self._timeout = 10
         self.url = 'https://twitter.com'
         self._get_new_session()
+        self._session.headers.update({'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101 Firefox/78.0'})
+
 
     # TODO: would need to modify this when twint proxy feature is implemented here, so that correct proxy is used
     def _get_new_session(self, session_type=None):
