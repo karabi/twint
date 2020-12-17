@@ -23,7 +23,6 @@ class Token:
         self._timeout = 10
         self.url = 'https://twitter.com'
         self._get_new_session()
-        self._session.headers.update({'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101 Firefox/78.0'})
 
 
     # TODO: would need to modify this when twint proxy feature is implemented here, so that correct proxy is used
@@ -35,6 +34,7 @@ class Token:
             logme.info(__name__ + ':[TOR SESSION] Creating new TOR Session. Please give it a couple of seconds...')
             print('[TOR SESSION] Creating new TOR Session. Please give it a couple of seconds...')
             self._session = tor_session(hops_count=2)
+            self._session.headers.update({'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101 Firefox/78.0'})
             self.config.Tor_guest = True
         else:
             self._session = requests.session()
