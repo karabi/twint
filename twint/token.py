@@ -47,7 +47,7 @@ class Token:
         for attempt in range(self._retries + 1):
             # The request is newly prepared on each retry because of potential cookie updates.
             logme.debug(__name__ + f':Retrieving {self.url}')
-            twitter_request = Request('GET', self.url).prepare()
+            twitter_request = Request('GET', self.url,headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101 Firefox/78.0'}).prepare()
             try:
                 if self.config.Tor_guest:
                     logme.debug(__name__ + ':using TOR to fetch the Guest Token.')
